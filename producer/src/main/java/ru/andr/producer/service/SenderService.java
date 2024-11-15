@@ -17,7 +17,7 @@ public class SenderService {
         this.stringCallbackListener = stringCallbackListener;
     }
 
-    public void sendMessage(String message) {
+    public void sendMessages(String message) {
         val parts = message.split(";");
 
         String key = null;
@@ -26,8 +26,14 @@ public class SenderService {
             key = parts[0];
             value = parts[1];
         }
+
+        send(KafkaProducerConfig.TOPIC_NAME_1, key, value);
+        send(KafkaProducerConfig.TOPIC_NAME_2, key, value);
+    }
+
+    private void send(String topic, String key, String value) {
         System.out.println("KEY " + key);
-        val future = kafkaTemplate.send(KafkaProducerConfig.TOPIC_NAME_2, key, value);
+        val future = kafkaTemplate.send(topic, key, value);
         future.whenComplete((result, ex) -> {
             if (ex != null) {
                 stringCallbackListener.onFailure(ex);

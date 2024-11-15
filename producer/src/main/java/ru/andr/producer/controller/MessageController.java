@@ -1,6 +1,5 @@
 package ru.andr.producer.controller;
 
-import lombok.Getter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,7 +16,7 @@ public class MessageController {
 
     @GetMapping("/send")
     public ResponseEntity<String> sendMessage(@RequestParam("message") String message) {
-        service.sendMessage(message);
+        service.sendMessages(message);
         return ResponseEntity.ok(message);
     }
 

@@ -32,7 +32,6 @@ public class SenderService {
     }
 
     private void send(String topic, String key, String value) {
-        System.out.println("KEY " + key);
         val future = kafkaTemplate.send(topic, key, value);
         future.whenComplete((result, ex) -> {
             if (ex != null) {

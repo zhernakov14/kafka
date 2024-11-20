@@ -19,5 +19,4 @@ public class MessageController {
         service.sendMessages(message);
         return ResponseEntity.ok(message);
     }
-
 }

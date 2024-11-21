@@ -33,3 +33,7 @@ build/
 .vscode/
 /.mvn/
 .gitattributes
+/consumer/.mvn/
+/producer/.mvn/
+consumer/.gitattributes
+producer/.gitattributes

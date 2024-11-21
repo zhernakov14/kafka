@@ -1,5 +1,6 @@
 package ru.andr.producer.service;
 
+import lombok.RequiredArgsConstructor;
 import lombok.val;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
@@ -7,15 +8,11 @@ import ru.andr.producer.config.KafkaProducerConfig;
 import ru.andr.producer.domain.StringCallbackListener;
 
 @Service
+@RequiredArgsConstructor
 public class SenderService {
 
     private final KafkaTemplate<String, String> kafkaTemplate;
     private final StringCallbackListener stringCallbackListener;
-
-    public SenderService(KafkaTemplate<String, String> kafkaTemplate, StringCallbackListener stringCallbackListener) {
-        this.kafkaTemplate = kafkaTemplate;
-        this.stringCallbackListener = stringCallbackListener;
-    }
 
     public void sendMessages(String message) {
         val parts = message.split(";");

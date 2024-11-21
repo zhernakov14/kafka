@@ -16,7 +16,7 @@ public class KafkaConsumer {
                        @Header(KafkaHeaders.RECEIVED_PARTITION) int partition,
                        @Header(value = KafkaHeaders.RECEIVED_KEY, required = false) String key,
                        String message) {
-        log.info("Consume message: (" + key + ") " + message + "\nOffset: " + offset + "\nPartition: " + partition);
+        log.info("Consume message: (" + key + ") " + message + " Offset: " + offset + " Partition: " + partition);
     }
 
     @KafkaListener(topics = "${topic2}")
@@ -24,6 +24,6 @@ public class KafkaConsumer {
                        @Header(KafkaHeaders.RECEIVED_PARTITION) int partition,
                        @Header(value = KafkaHeaders.RECEIVED_KEY, required = false) String key,
                        @Payload String message) {
-        log.info("Consume message: (" + key + ") " + message + "\nOffset: " + offset + "\nPartition: " + partition);
+        log.info("Consume message: (" + key + ") " + message + " Offset: " + offset + " Partition: " + partition);
     }
 }
